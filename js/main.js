@@ -92,13 +92,17 @@ document.addEventListener('DOMContentLoaded', function() {
       // Insertar HTML de los productos
       var productosDiv = document.querySelector('.productos');
       var productosHTML = '';
-  
+
       for (var i = 0; i < 9; i++) {
         productosHTML += `
           <div class="modulo">
             <img src="https://source.unsplash.com/400x400/?clothing,men" alt="Producto">
-          </div>
-        `;
+            <p class="descripcion">Descripción del producto</p>
+            <p class="precio">$99.99</p>
+            <p class="talla">Talla: M</p>
+            <a href="#" class="boton">Agregar al carrito</a>
+        </div>
+    `;
       }
   
       productosDiv.innerHTML = productosHTML;
