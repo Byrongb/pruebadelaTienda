@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <button id="menuButton" class="icono">
             &#9776;
           </button>
-          <span class="titulo">Men Style</span>
+          <h1 class="titulo">Men Style</h1>
           <div class="menu">
             <a href="#">MEN</a>
             <a href="#">ACCESORIES</a>
@@ -58,7 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
       menuButton.addEventListener('click', function() {
         menu.classList.toggle('mostrar');
-        document.body.classList.toggle('no-scroll'); // Agregar o eliminar la clase 'no-scroll' del <body>
+        document.body.classList.toggle('no-scroll'); 
+        // Agregar o eliminar la clase 'no-scroll' del <body>
       });
   
       // Manejar el evento clic del botón anterior del slider
