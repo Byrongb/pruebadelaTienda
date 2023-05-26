@@ -31,15 +31,21 @@ body {
   padding: 20px;
   display: flex;
   align-items: center;
-  justify-content: center; /* Modificación: centrar el contenido */
+  justify-content: center;
   height: 80px;
 }
 
 .menu-desplegable {
   display: flex;
   align-items: center;
-  justify-content: center; /* Modificación: centrar el contenido */
+  justify-content: flex-start;
   flex-grow: 1;
+}
+
+.menu-desplegable .titulo {
+  margin: 0 auto; /* Modificación: centrar horizontalmente */
+  text-align: center;
+  font-size: 4rem;
 }
 
 .menu-desplegable .menu {
@@ -104,8 +110,10 @@ body {
   color: #fff;
   cursor: pointer;
   font-size: 2rem;
-  text-align: left;
+  
 }
+
+
 
 .slides {
   width: 100%;
@@ -152,6 +160,7 @@ body {
 }
 
 .productos .modulo {
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -161,9 +170,11 @@ body {
   padding: 20px;
   box-sizing: border-box;
   text-align: center;
+
 }
 
 .productos img {
+  width: 60%;
   max-width: 100%;
   max-height: 200px;
   object-fit: cover;
