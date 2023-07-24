@@ -1,9 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  overflow-x: hidden; /* Cambiar a 'hidden' para eliminar el scroll */
-  background-color:#fff8e7
+  background-color: #fff8e7;
+  min-height: 100vh;
+  overflow-x: hidden
+}
+
+body.carrito-vacio .footer {
+  display: none;
+}
+
+@keyframes moverCamion {
+  0% { left: -120px; }
+  100% { left: 100%; }
+}
+
+#carritoAnimado{
+  width: 12rem;
+}
+body.carrito-vacio .productos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 70px); 
 }
 
 .no-scroll {
@@ -20,9 +42,15 @@ body {
 }
 
 .titulo {
-  margin: 0;
+  margin: 0 auto;
   text-align: center;
   font-size: 4rem;
+}
+
+.titulo-centrado {
+  margin-left: 36%;
+  margin-right: auto;
+  width: 30%;
 }
 
 .barra-superior {
@@ -31,8 +59,132 @@ body {
   padding: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between; /* Esto proporcionará espacio en la barra superior */
   height: 80px;
+  
+}
+
+
+
+.titulo, .barra-superior .titulo-centrado {
+  font-size: 4rem; /* Ajusta este valor a tu preferencia */
+}
+
+.buscador {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  position: relative; 
+  border: 2px solid #333;  /* Agrega un borde para resaltar el buscador */
+  border-radius: 4px
+  
+}
+
+.buscador::before {
+  content: "\1F50D";
+  position: absolute;
+  left: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.buscador h1 {
+  font-size: 3rem; /* Ajusta este valor según tus necesidades */
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.buscador input {
+  padding: 5px 10px 5px 40px; /* Se ha aumentado el padding a la izquierda para dejar más espacio al icono */
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  width: 300px; /* Aumentar el tamaño del buscador */
+  margin-right: 20px;
+  border-radius: 15px;
+  border: 2px solid #000;
+}
+
+
+.buscador span {
+  font-size: 1rem;
+}
+
+.carrito {
+  border: 2px solid #000;
+  padding: 15px; /* Aumenta el padding para hacer el botón más grande */
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 3rem;
+}
+
+.carrito-vacio p {
+  font-size: 24px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.carrito-vacio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.contenedor-carrito-vacio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#carritoButton {
+  /* ...otros estilos... */
+  font-size: 20px; /* Ajusta este valor según necesites */
+}
+
+.carrito-vacio #comprarProductosButton {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #008CBA; /* color de fondo */
+  color: white; /* color del texto */
+  border: none;
+  border-radius: 5px; /* bordes redondeados */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carrito-vacio #comprarProductosButton:hover {
+  background-color: #007B9A; /* color de fondo al pasar el mouse */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+input, select {
+  width: 300px; /* todos tendrán el mismo tamaño */
+  padding: 10px;
+  margin: 5px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px; /* bordes redondeados */
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* añadir sombras para un aspecto 3D */
+}
+
+
+
+input[type=submit]:hover {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Añade más sombra cuando se pasa el ratón */
 }
 
 .menu-desplegable {
@@ -43,7 +195,7 @@ body {
 }
 
 .menu-desplegable .titulo {
-  margin: 0 auto; /* Modificación: centrar horizontalmente */
+  margin: 0 auto;
   text-align: center;
   font-size: 4rem;
 }
@@ -65,8 +217,42 @@ body {
   pointer-events: none;
   transform: translateX(-100%);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  padding: 30px;
+  padding: 5px;
   z-index: 1;
+}
+
+.menu-desplegable .menu li {
+  width: 100%;
+  text-align: center;
+}
+
+.menu-desplegable .menu li a {
+  display: block;
+  width: 100%;
+  padding: 1em;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.menu-desplegable .menu li a:hover {
+  background-color: #f2f2f2; /* color de fondo general al pasar el mouse */
+}
+
+.menu-desplegable .menu li:nth-child(1) a:hover {
+  background-color: #ffb3b3; /* color de fondo al pasar el mouse sobre HOME */
+}
+
+.menu-desplegable .menu li:nth-child(2) a:hover {
+  background-color: #b3b3ff; /* color de fondo al pasar el mouse sobre TOP */
+}
+
+.menu-desplegable .menu li:nth-child(3) a:hover {
+  background-color: #b3ffb3; /* color de fondo al pasar el mouse sobre LOWER */
+}
+
+.menu-desplegable .menu li:nth-child(4) a:hover {
+  background-color: #ffffb3; /* color de fondo al pasar el mouse sobre ACCESSORIES */
 }
 
 .menu-desplegable .menu.mostrar {
@@ -77,14 +263,15 @@ body {
 
 .menu-desplegable .menu a {
   display: block;
-  padding: 10px 20px;
+  padding: 4.5em 1em;  /* Disminuye el padding para hacer los botones más compactos */
   color: #fff;
   text-decoration: none;
-  font-size: 1.2rem;
-  margin-bottom: 15rem;
-  border-radius: 4px;
+  font-size: 1em; 
+  width: 100%; /* Agrega esto para hacer que los botones ocupen todo el espacio rectangular */
   background-color: #333;
   transition: background-color 0.3s ease;
+  margin-bottom: 0;
+  text-align: center;
 }
 
 .menu-desplegable .menu a:hover {
@@ -110,10 +297,7 @@ body {
   color: #fff;
   cursor: pointer;
   font-size: 2rem;
-  
 }
-
-
 
 .slides {
   width: 100%;
@@ -160,7 +344,7 @@ body {
 }
 
 .productos .modulo {
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -170,7 +354,7 @@ body {
   padding: 20px;
   box-sizing: border-box;
   text-align: center;
-
+  margin-bottom: 0; /* Eliminar el margen inferior */
 }
 
 .productos img {
@@ -214,55 +398,59 @@ body {
   padding: 20px;
   text-align: center;
   font-size: 0.8rem;
+  margin-top: auto;
 }
 
 .footer p {
   margin: 0;
 }
 
+.pagina-carrito .footer {
+  display: none;
+}
 
 /* Estilos para dispositivos móviles */
 @media only screen and (max-width: 768px) {
   /* Ajustes para el menú desplegable en dispositivos móviles */
-  
+
+
   .menu-desplegable {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    padding: 10px;
+
     background-color: #333;
     color: #fff;
-    position: relative;
-    z-index: 1;
-  }
-  
-  .menu-desplegable .titulo {
-    font-size: 25px;
-    flex-grow: 1;
-  }
-  
-  .menu {
-    display: none;
-    flex-direction: column;
-    background-color: #222;
-    padding: 10px;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-  }
-  
-  .menu a {
-    color: #fff;
-    text-decoration: none;
-    margin-bottom: 10px;
   }
 
-  .menu-desplegable .menu a {
-    margin-bottom: 6rem;
-    font-size: 15px;
+  .menu-desplegable .titulo- {
+    font-size: 25px;
+  }
+
+
+  .titulo, .barra-superior .titulo-centrado {
+    font-size: 1.2rem; /* Ajusta este valor a tu preferencia */
+  }
+
+  
+ #buscadorInput, #carritoButton, #carritoCantidad {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 5px;
+}
+
+
+  .buscador input {
+    font-size: 0.4rem;
+  }
+
+  #carritoButton {
+    font-size: 14px;
   }
   
+  .menu-desplegable .menu a {
+    margin-bottom: 6rem;
+    font-size: 10px;
+  }
+
   .icono {
     background-color: transparent;
     color: #fff;
@@ -272,58 +460,182 @@ body {
   }
 
   .menu-desplegable .icono {
-    position: absolute;
-    top: 50%;
-    left: 10px;
     transform: translateY(-50%);
   }
-  
-  /* Mostrar el menú al hacer clic en el ícono */
-  
-  .menu-desplegable.abierto .menu {
-    display: flex;
-    z-index: 2; /* Aumentamos la propiedad z-index para que el menú esté por encima de otros elementos */
-  }
-  
-  /* Estilos adicionales para mantener la apariencia original */
-  
-  .barra-superior {
-    position: relative;
-    top: 0px;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    height: 60px;
-    background-color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+
   
   .principal {
     margin-top: 60px;
     padding: 20px;
   }
-  
-  /* Ajustes para los productos en dispositivos móviles */
-  
+
   .productos {
-    display: grid; /* Cambiamos a flex para mostrar los productos en filas */
-    flex-wrap: wrap; /* Permite que los productos se envuelvan a una nueva línea */
-    justify-content: center; /* Centramos los productos horizontalmente */
-    overflow-x: hidden;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
-    text-align: center;
-    margin-bottom: 20px;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     overflow-x: hidden;
-
   }
-  
+
   .producto {
     margin-bottom: 20px;
-    width: calc(50% - 10px); /* Establecemos el ancho en 50% y restamos el espacio entre los productos */
+    width: calc(50% - 10px);
+  }
+}
+
+@media only screen and (max-width: 1350px) {
+
+ 
+
+   .icono {
+    align-items: left;
+    left: 0;
+  }
+
+  .titulo-centrado {
+    align-items: center;
+  }
+
+  #buscadorInput, #carritoButton, #carritoCantidad {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 5px;
+}
+
+  #carritoButton {
+    align-self: flex-end;
+  }
+
+  .buscador{
+    display: block;
+  
+  }
+
+}
+
+@media only screen and (max-width: 1350px) {
+
+  .menu-desplegable {
+
+    background-color: #333;
+    color: #fff;
+  }
+
+  .menu-desplegable .titulo- {
+    font-size: 25px;
+  }
+
+  .barra-superior {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .no-scroll {
+    overflow-y: hidden;
+  }
+
+  .titulo, .barra-superior .titulo-centrado {
+    font-size: 1.2rem; /* Ajusta este valor a tu preferencia */
+  }
+
+
+  .buscador input {
+    font-size: 0.4rem;
+    width: 100px; /* Aumentar el tamaño del buscador */
+  }
+
+  #carritoButton {
+    font-size: 14px;
+  }
+  
+  .menu-desplegable .menu a {
+    margin-bottom: 6rem;
+    font-size: 10px;
+  }
+
+  .icono {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .menu-desplegable .icono {
+    transform: translateY(-50%);
+  }
+
+  
+  .principal {
+    margin-top: 60px;
+    padding: 20px;
+  }
+
+  .productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+
+  .producto {
+    margin-bottom: 20px;
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 500px) {
+  body, html {
+    margin: 0;
+    padding: 0;
+  }
+
+  .barra-superior {
+    padding: 0.4;
+    margin: 0;
+  }
+
+  .menu-desplegable {
+    padding: 0;
+    margin: 0;
+  }
+
+  .buscador {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 8px;
+  }
+
+  #carritoButton, #buscadorInput, #carritoCantidad {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    right: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+
+  #buscadorInput{
+    width: 5rem;
+    height: 1rem;
+    text-indent: 2em;
+  }
+
+  
+  
+  .buscador::before {
+    display: none;
+  }
+
+  .buscador{
+    order: 1;
+  }
+
+  .carrito {
+    order: 2;
   }
 }
